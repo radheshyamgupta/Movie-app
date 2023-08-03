@@ -1,0 +1,35 @@
+.movie{
+    
+      
+        border-radius: 10px;
+    
+     /* border: 1px solid black; */
+     
+       
+    
+}
+
+.movie h2{
+    color: yellow;
+}
+.movie p{
+    color: white;
+}
+.movie li{
+
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 10px ;
+  
+  background-color:rgb(3, 3, 68);
+  
+}
+.movie .movieDiv{
+
+    
+     gap: 10px;
+   
+  
+    
+    
+}
