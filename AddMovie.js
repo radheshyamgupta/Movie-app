@@ -1,53 +1,47 @@
-// import React,{useRef} from 'react'
-// import "./AddMovie.css"
-// export default function AddMovie() {
-//    const titleInptValue=useRef("")
-//    const openingTextValue=useRef("")
-//    const realseDateValue=useRef("")
-//    const buttonHnadler=()=>{
-//     const buttonHandler = () => {
-//       const movieDetail = {
-//         title: titleInputValue.current.value,
-//         opening: openingTextValue.current.value,
-//         releaseDate: releaseDateValue.current.value,
-//       };
-//       console.log(movieDetail);
-//     }
-  
-
-//   return (
-//     <div className="addmovie">
-//         <label>Title</label>
-//         <input ref={titleInptValue}></input>
-//         <label>Opening Text</label>
-//         <textarea ref={openingTextValue}></textarea>
-//         <label>Release Date </label>
-//         <input ref={realseDateValue}></input>
-//         <button className="add" onClick={buttonHnadler}>Add Moives</button>
-//     </div>
-//   )
-// }
-import React, { useRef } from 'react';
-import "./AddMovie.css";
+import React, { useRef, useState } from 'react';
+import "./AddMovue.css";
 
 export default function AddMovie() {
   const titleInputValue = useRef("");
   const openingTextValue = useRef("");
   const releaseDateValue = useRef("");
+   const [data,setdata]=useState([])
 
   const buttonHandler = () => {
+    const arr=[]
     const movieDetail = {
       title: titleInputValue.current.value,
       opening: openingTextValue.current.value,
       releaseDate: releaseDateValue.current.value,
     };
     console.log(movieDetail);
+    fetch("https://movieapp-f46d7-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json", {
+      method: "post",
+      body: JSON.stringify(movieDetail), 
+      headers: {
+        "Content-Type": "application/json", 
+      },
+    }).then((res) => {
+      return res.json();
+    })
+    .then((body)=>{
+        setdata((prvData)=>[
+            ...prvData,{title:body.title,opening:body.opening,releaseDate:body.releaseDate}]
+         )
+         console.log(data)
+
+  })
+    .catch((err) => {
+      console.log(err);
+    });
+
     titleInputValue.current.value = "";
     openingTextValue.current.value = "";
     releaseDateValue.current.value = "";
-
+    console.log(data,"this is data from backend")
+    
   }
-
+ 
 
   return (
     <div className="addmovie">
@@ -61,4 +55,3 @@ export default function AddMovie() {
     </div>
   )
 }
-

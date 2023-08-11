@@ -11,14 +11,22 @@ export default function App() {
     setloding(true)
     seterror(null)
     try {
-      const res = await fetch(" https://swapi.dev/api/films")
+      const res = await fetch( "https://movieapp-f46d7-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json")
       if (!res.ok) {
         throw new error("something went wrong")
       }
 
       const data = await res.json()
-
-      setMovies(data.results)
+const loadMovies=[]
+  for(let key in data){
+    loadMovies.push({title:data[key].title,
+   
+    opening:data[key].opening,
+    realseData:data[key].releaseDate
+  })
+  }
+  setMovies(loadMovies)
+  
       setloding(false)
     }
 
@@ -50,3 +58,4 @@ export default function App() {
     </div>
   )
 }
+

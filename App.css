@@ -1,4 +1,4 @@
-.App {
+ .App {
   text-align: center;
 }
 
@@ -34,7 +34,7 @@
 }
 .container .div{
 
- border: 1px solid black;
+ /* border: 1px solid black; */
   border-radius: 10px;
   height: 80px;
 }
@@ -49,18 +49,22 @@
   text-align: center;
   background-color: rgb(3, 3, 68);
   color: white;
-  height: 35px; width:150px;
+  height: 35px; 
+  width:150px;
   font-size: large;
   border: none;
   outline: none;
   border-radius: 10px;
+
 
 }
 .container .div1{
  background-color:aliceblue;
   border-radius: 10px;
   padding-top: 10px;
- /* border: 1x solid black; */
- border: 1px solid black;
-  
+ border: 1x solid black; 
+
+}
+.div1{
+  border: 1px solid black;
 }
